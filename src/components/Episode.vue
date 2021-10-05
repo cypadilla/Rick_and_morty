@@ -9,6 +9,8 @@
                     :sub-title="`Estrenado: ${episode[0].air_date}`">
                     <h3>Detalles</h3>
                     <b-card-text>
+                        Identificacion: {{episode[0].id}}
+                        <br>
                         Episodio: {{episode[0].episode}}
                         <br>
                         Numero de personajes : {{episode[0].characters.length}}

@@ -16,15 +16,15 @@ data(){
         episode:[]
     }
 },
-
+// Se obtienen los episodios cuando se crea el componente
 created(){
     this.getEpisode()
 },
 
 methods: {
+    // Metodo para obtener los episodios 
     getEpisode(){
-     const id = this.$route.params.id
-
+     const id = this.$route.params.idEpisode
      Promise.all([api.getEpisode(id)])
      .then( episode => this.episode = episode)
     }

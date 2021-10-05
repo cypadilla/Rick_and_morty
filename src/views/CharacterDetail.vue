@@ -19,6 +19,7 @@ export default {
  },
 
  methods:{
+     //Metodo para obtener el detalle de un personaje
     getCharacter(){
         const id = this.$route.params.id
         Promise.all ( [api.getCharacter(id) ])

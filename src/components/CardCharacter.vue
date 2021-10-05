@@ -44,10 +44,12 @@ export default {
     },
 
     methods:{
+        //Metodo para redirigir a la vista de episodios
         goEpisode(episode){
-            let NumEpisode = episode.split('episode/',-1)
-            console.log('num',NumEpisode[1])
-            this.$router.push({ name: 'episode-detail', params: {NumEpisode} })
+            //metodo para extraer los números del episodio 
+            let numEpisode = episode.split('episode/',-1)[1]
+            console.log(numEpisode)
+            this.$router.push({ path:`/episode/${numEpisode}` })
         }
     }
 }

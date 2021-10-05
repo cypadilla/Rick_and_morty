@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <!-- Envio del personaje por props -->
     <Characters :characters="characters"/>
 
   </div>
@@ -21,21 +22,15 @@ export default {
   data(){
       return{
         characters:[],
-        page:1,
-        pages:1
       }
   },
 
-
+//Se obtienen los personajes cuando se crea el componente 
   created(){
     api.getCharacters()
    .then( data => {
      this.characters = data.results
-     this.pages = data.info.pages
-
-    //  console.log(data.info)
    })
-  //  .finally(()=> this.isLoading = false)
   },
 
   

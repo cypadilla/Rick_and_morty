@@ -3,7 +3,7 @@
       <b-container fluid class="p-5 ">
           <b-row>
             <b-col cols="12" md="3" sm="6" class="center" align-h="center"
-            v-for="(character, index) in characters"
+            v-for="(character, index) in mutableCharacter"
             :key="index"
             >
                 <b-card-group deck>
@@ -42,6 +42,7 @@ export default {
     data() {
     return {
       page: 1,
+      mutableCharacter:this.characters
       };
     },
     props: {
@@ -52,13 +53,14 @@ export default {
     },
 
   methods:{
+    // Función para obtener los personajes 
     getCharacters($state){
       Promise.all([api.getCharactersPage(this.page)])
       .then((character) =>{
         if(character.length){
           this.page += 1
-          this.characters = this.characters.concat(character[0])
-          console.log(this.characters)
+          // Función para no transformar los datos de los props
+          this.mutableCharacter= this.mutableCharacter.concat(character[0])
           $state.loaded();
         }else{
           $state.complete();
