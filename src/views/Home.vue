@@ -1,18 +1,30 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Characters/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import Characters from '@/components/Characters.vue'
+import api from '@/api'
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    Characters
+  },
+
+  data(){
+      return{
+        characters:[]
+      }
+  },
+
+
+  created(){
+    api.getCharacters()
+   .then( characters =>(this.characters = characters) )
+  //  .finally(()=> this.isLoading = false)
   }
 }
 </script>
