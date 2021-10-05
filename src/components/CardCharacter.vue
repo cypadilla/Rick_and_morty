@@ -23,7 +23,7 @@
             <h2 class="text-center mt-4">Episodios</h2>
             <b-row cols="3" sm="12" class="mt-3" >
                 <b-button-group v-for="(episode, index) in character[0].episode" :key="index">
-                    <b-button @click="goEpisode(episode)" class="w-25 mb-1 p-2" variant="success"> Episodio: {{index}}</b-button>
+                    <b-button @click="goEpisode(episode)" class="w-25 mb-1 p-2" variant="success"> Episodio: {{episode.split('episode/',-1)[1]}}</b-button>
                 </b-button-group>
             </b-row>
         </b-row>
@@ -44,8 +44,10 @@ export default {
     },
 
     methods:{
-        goEpisode(){
-            alert('hola')
+        goEpisode(episode){
+            let NumEpisode = episode.split('episode/',-1)
+            console.log('num',NumEpisode[1])
+            this.$router.push({ name: 'episode-detail', params: {NumEpisode} })
         }
     }
 }

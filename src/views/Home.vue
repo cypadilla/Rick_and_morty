@@ -1,32 +1,42 @@
 <template>
   <div class="home">
     <Characters :characters="characters"/>
+
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Characters from '@/components/Characters.vue'
+import Characters from '@/components/Characters.vue';
+
+
 import api from '@/api'
 export default {
   name: 'Home',
   components: {
-    Characters
+    Characters,
+
   },
 
   data(){
       return{
-        characters:[]
+        characters:[],
+        page:1,
+        pages:1
       }
   },
 
 
   created(){
     api.getCharacters()
-   .then( characters =>(this.characters = characters) )
-  //  .finally(()=> this.isLoading = false)
-  }
+   .then( data => {
+     this.characters = data.results
+     this.pages = data.info.pages
 
+    //  console.log(data.info)
+   })
+  //  .finally(()=> this.isLoading = false)
+  },
 
   
 }
