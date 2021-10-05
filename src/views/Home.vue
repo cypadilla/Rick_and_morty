@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Characters/>
+    <Characters :characters="characters"/>
   </div>
 </template>
 
@@ -26,5 +26,8 @@ export default {
    .then( characters =>(this.characters = characters) )
   //  .finally(()=> this.isLoading = false)
   }
+
+
+  
 }
 </script>

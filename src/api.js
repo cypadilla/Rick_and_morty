@@ -11,11 +11,18 @@ async function getCharacters(){
 function getCharacter(id){
     return fetch(`${url}/character/${id}`)
     .then((res) => res.json())
-    .then((res) => res.results)
+    .then((res) => res)
     .catch((rej) => console.log(rej));
 }
 
+function getEpisode(id){
+    return fetch(`${url}/episode/${id}`)
+    .then((res) => res.json())
+    .then((res) => res)
+    .catch((rej) => console.log(rej));
+}
 export default {
     getCharacters,
     getCharacter,
+    getEpisode,
   };
